@@ -6,6 +6,13 @@ require('dotenv').config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+const patientsRouter = require('./routes/patients');
+const schedulesRouter = require('./routes/schedules');
+
+// Use routes
+app.use('/api/patients', patientsRouter);
+app.use('/api/schedules', schedulesRouter);
+
 // Middleware
 app.use(cors());
 app.use(express.json()); // Allows us to parse JSON
